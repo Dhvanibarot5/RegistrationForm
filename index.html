@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Registration form</h1>
+    <div class="form-container">
+      <form name="registerForm">
+        <label for="Name">Name *</label>
+        <input type="text" id="name" name="Name" placeholder="Dhvani" class="input" />
+        <p id="nameErr" class="error-message">Please Enter Your Name</p>
+        <label for="e-mail">E-mail address *</label>
+        <input type="text" id="e-mail" placeholder="dhvani5@gmail.com" class="input" />
+        <p id="mailErr" class="error-message">Please Enter Your E-mail</p>
+        <div class="genderDiv">
+          <label for="gender">Gender *</label><br /><br />
+          <input type="radio" class="radio-input" name="gender" value="radio" id="male" /> Male
+          <input type="radio" class="radio-input" name="gender" value="radio" id="female" /> Female
+        </div>
+        <p id="genderErr" class="error-message">Please Select Gender</p>
+        <label for="phoneNumber">Phone Number *</label>
+        <input type="number" class="input" id="phoneNumber" maxlength="9" pattern=".{9,}" title="9 characters length" placeholder="91+" />
+        <p id="noErr" class="error-message">Please Enter Your Phone Number</p>
+        <label for="City">City *</label>
+        <input type="text" id="city" placeholder="Surat" class="input" />
+        <p id="cityErr" class="error-message">Please Enter Your City</p>
+        <label for="password">Password *</label>
+        <input type="password" id="password" pattern=".{8,}" title="8 characters minimum" class="input" placeholder="Enter Your Password"/>
+        <p id="passErr" class="error-message">Please Enter Your Password</p>
+        <input class="button" type="submit" value="submit" name="submit" id="submit" />
+      </form>
+    </div>
+  </body>
+  <script>
+    document.getElementById("submit").addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const mail = document.getElementById("e-mail").value;
+      const male = document.getElementById("male").checked;
+      const female = document.getElementById("female").checked;
+      const number = document.getElementById("phoneNumber").value;
+      const city = document.getElementById("city").value;
+      const password = document.getElementById("password").value;
+
+      //   Name Error
+      if (!name) document.getElementById("nameErr").style.display = "block";
+      else document.getElementById("nameErr").style.display = "none";
+
+      //  Mail Error
+      if (!mail) document.getElementById("mailErr").style.display = "block";
+      else document.getElementById("mailErr").style.display = "none";
+
+      //   Gender Error
+      if (!male && !female) document.getElementById("genderErr").style.display = "block";
+      else document.getElementById("genderErr").style.display = "none";
+
+      //  Number
+      if (!number) document.getElementById("noErr").style.display = "block";
+      else document.getElementById("noErr").style.display = "none";
+
+      //   City
+      if (!city) document.getElementById("cityErr").style.display = "block";
+      else document.getElementById("cityErr").style.display = "none";
+
+      //   Password
+      if (!password) document.getElementById("passErr").style.display = "block";
+      else document.getElementById("passErr").style.display = "none";
+    });
+  </script>
+</html>
